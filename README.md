@@ -36,17 +36,20 @@ The PDF of the article is available in Open Access [here]( https://doi.org/10.11
   doi={10.1109/LRA.2022.3143565}
 }
 ```
+-->
 
 ### Video
 
-[![Learning Visual Object Localization from Few Labeled Examples using Sound Prediction as a Pretext Task](https://github.com/idsia-robotics/Sound-as-Pretext/blob/main/code/data/out/video.gif)](https://www.youtube.com/watch?v=fuexj03mGNo)
+Soon to be uploaded.
+
+<!-- [![Self-Supervised Learning of Visual Robot Localization Using Prediction of LEDs States as a Pretext Task](https://github.com/idsia-robotics/Sound-as-Pretext/blob/main/code/data/out/video.gif)](https://www.youtube.com/watch?v=fuexj03mGNo) -->
 
 ### Code
 
-The entire codebase, training scripts and pre-trained models are avaliable [here](https://github.com/idsia-robotics/Sound-as-Pretext/tree/main/code).
+The entire codebase is avaliable [here](https://github.com/idsia-robotics/leds-as-pretext/tree/main/code).
 
+<!--
 ### Dataset
 
 The dataset divided into [unlabeled training-set](https://drive.switch.ch/index.php/s/RSz7jRiHrSwf54p), [labeled training-set](https://drive.switch.ch/index.php/s/BfQwbzCf4gTGJ7T), [validation-set](https://drive.switch.ch/index.php/s/qN4NO9296K6ry1t), and [test-set](https://drive.switch.ch/index.php/s/7myEJA7E4zYQlVz) is avaiable through the relative links.
-
 -->
