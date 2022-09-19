@@ -11,21 +11,18 @@ This pretext task is compelling because: a) it indirectly forces the model to le
 We instantiate the general approach to a concrete task: visual relative localization of nano-quadrotors.
 Experimental results on a challenging dataset show that the approach is very effective; compared to a baseline that does not use the proposed pretext task, it reduces the mean absolute localization error by as much as 78% (43 to 9 pixels on *x*; 28 to 6 pixels on *y*).
 
+
+![LEDs as Pretext](https://github.com/idsia-robotics/leds-as-pretext/blob/main/img/led_pretext_approach.png)
+Figure 1: *Overview of our approach. The model is trained to predict: the drone position in the current frame, by minimizing ${\cal L}_\text{end}$ defined on ${\cal T}_l$ (bottom); and the current state of the four drone LEDs, by minimizing ${\cal L}_\text{pretext}$ defined on ${\cal T}_l \cup {\cal T}_u$ (top).*
+
+![LEDs as Pretext](https://github.com/idsia-robotics/leds-as-pretext/blob/main/img/led_pretext_performance.png)
+Figure 2: *On the left, comparison of approaches in terms of MAE (lower is better) and R$^2$ score (higher is better) for the $x$ and $y$ variables.
+On the right, comparison of baseline (red), LEDs as a Pretext (green), and Upper Bound (blue) models trained with varying amounts of labels. MAE improvement refers to the percentage reduction in MAE between baseline and our LED-P approach. Results obtained by averaging the  performance on $x$ and $y$.*
+
 <!--
-![Sound as Pretext](https://github.com/idsia-robotics/Sound-as-Pretext/blob/main/code/data/out/Intro.png)
-Figure 1: *Given an image from the ground robot camera, the model estimates the relative position of the drone; this is the **end task**, learned by minimizing a regression end loss on few training frames for which the true relative position is known.
-We show that simultaneously learning to predict audio features (**pretext task**), which are known in all training frames, yields dramatic performance improvements for the end task.*
-
-
-![Regression Performance on the testing set](https://github.com/idsia-robotics/Sound-as-Pretext/blob/main/code/data/out/results.png)
-Figure 2: *End Task Regression Performance on the testing set.
-On the left side, we compare ground truth (x axis) and predictions (y axis) for different models (columns) and variables (rows).
-On the right, predictions on 30s of the testing set.
-Between seconds 17 and 20 the drone exits of the camera FOV, causing all models to temporarily fail.*
-
 The PDF of the article is available in Open Access [here]( https://doi.org/10.1109/LRA.2022.3143565).
 
-### Bibtex will be displayed here later
+### Bibtex
 
 ```properties
 @article{nava2022learning,
