@@ -48,8 +48,6 @@ Soon to be uploaded.
 
 The entire codebase is avaliable [here](https://github.com/idsia-robotics/leds-as-pretext/tree/main/code).
 
-<!--
 ### Dataset
 
-The dataset divided into [unlabeled training-set](https://drive.switch.ch/index.php/s/RSz7jRiHrSwf54p), [labeled training-set](https://drive.switch.ch/index.php/s/BfQwbzCf4gTGJ7T), [validation-set](https://drive.switch.ch/index.php/s/qN4NO9296K6ry1t), and [test-set](https://drive.switch.ch/index.php/s/7myEJA7E4zYQlVz) is avaiable through the relative links.
--->
+The entire dataset is available [here](https://drive.switch.ch/index.php/s/RSz7jRiHrSwf54p).
