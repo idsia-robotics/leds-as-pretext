@@ -46,8 +46,8 @@ Soon to be uploaded.
 
 ### Code
 
-The entire codebase is avaliable [here](https://github.com/idsia-robotics/leds-as-pretext/tree/main/code).
+The codebase is avaliable [here](https://github.com/idsia-robotics/leds-as-pretext/tree/main/code).
 
 ### Dataset
 
-The entire dataset is available [here](https://drive.switch.ch/index.php/s/RSz7jRiHrSwf54p).
+The entire dataset is available [here](https://drive.switch.ch/index.php/s/RSz7jRiHrSwf54p) as a *zipped* HDF5 file, containing separate groups for labeled and unlabeled training, validation, and testing sets.
