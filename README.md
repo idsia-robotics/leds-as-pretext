@@ -13,11 +13,11 @@ Experimental results on a challenging dataset show that the approach is very eff
 
 
 ![LEDs as Pretext](https://github.com/idsia-robotics/leds-as-pretext/blob/main/img/led_pretext_approach.png)
-Figure 1: *Overview of our approach. The model is trained to predict: the drone position in the current frame, by minimizing ${\cal L}_\text{end}$ defined on ${\cal T}_l$ (bottom); and the current state of the four drone LEDs, by minimizing ${\cal L}_\text{pretext}$ defined on ${\cal T}_l \cup {\cal T}_u$ (top).*
+Figure 1: *Overview of our approach. The model is trained to predict: the drone position in the current frame, by minimizing the end loss (**L**end) defined on **T**l (bottom); and the current state of the four drone LEDs, by minimizing the pretext loss (**L**pretext) defined on **T**l and **T**u (top).*
 
 ![LEDs as Pretext](https://github.com/idsia-robotics/leds-as-pretext/blob/main/img/led_pretext_performance.png)
-Figure 2: *On the left, comparison of approaches in terms of MAE (lower is better) and R$^2$ score (higher is better) for the $x$ and $y$ variables.
-On the right, comparison of baseline (red), LEDs as a Pretext (green), and Upper Bound (blue) models trained with varying amounts of labels. MAE improvement refers to the percentage reduction in MAE between baseline and our LED-P approach. Results obtained by averaging the  performance on $x$ and $y$.*
+Figure 2: *On the left, comparison of approaches in terms of MAE (lower is better) and R2 score (higher is better) for the x and y variables.
+On the right, comparison of baseline (red), LEDs as a Pretext (green), and Upper Bound (blue) models trained with varying amounts of labels. MAE improvement refers to the percentage reduction in MAE between baseline and our LED-P approach. Results obtained by averaging the performance on the x and y variables.*
 
 <!--
 The PDF of the article is available in Open Access [here]( https://doi.org/10.1109/LRA.2022.3143565).
