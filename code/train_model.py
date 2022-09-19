@@ -141,7 +141,7 @@ if __name__ == '__main__':
     parser.add_argument('-r', '--reduce', type=int, help='number of labeled data to use',
                         default=None)
     parser.add_argument('-a', '--augment', type=str, help='whether to augment the data',
-                        default='True')
+                        default='False')
     parser.add_argument('-lw', '--log-wandb', type=str, help='whether to log to wandb',
                         default='True')
     parser.add_argument('-p', '--project-name', type=str, help='name of wandb project',
