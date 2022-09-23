@@ -50,4 +50,4 @@ The codebase is avaliable [here](https://github.com/idsia-robotics/leds-as-prete
 
 ### Dataset
 
-The entire dataset is available ~~[here](https://drive.switch.ch/index.php/s/p6YsZO3pjf4koso)~~ as a *zipped* HDF5 file containing separate groups for labeled and unlabeled training, validation, and testing sets.
+The entire dataset is available [here](https://drive.switch.ch/index.php/s/p6YsZO3pjf4koso) as a *zipped* HDF5 file containing separate groups for labeled and unlabeled training, validation, and testing sets.
