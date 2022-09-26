@@ -40,7 +40,7 @@ The PDF of the article is available in Open Access [here]( https://doi.org/10.11
 
 ### Video
 
-[![Self-Supervised Learning of Visual Robot Localization Using Prediction of LEDs States as a Pretext Task](https://github.com/idsia-robotics/leds-as-pretext/blob/main/img/video.gif)](https://github.com/idsia-robotics/leds-as-pretext/blob/main/img/led_pretext_video.mp4?raw=true)
+[![Self-Supervised Learning of Visual Robot Localization Using Prediction of LEDs States as a Pretext Task](https://github.com/idsia-robotics/leds-as-pretext/blob/main/img/led_pretext_video_preview.gif)](https://github.com/idsia-robotics/leds-as-pretext/blob/main/img/led_pretext_video.mp4?raw=true)
 
 ### Code
 
