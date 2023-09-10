@@ -1,15 +1,16 @@
-# Self-Supervised Learning of Visual Robot Localization Using Prediction of LEDs States as a Pretext Task
+# Self-Supervised Learning of Visual Robot Localization Using LED State Prediction as a Pretext Task
 
-*Mirko Nava, Nicola Armas, Antonio Paolillo, Jerome Guzzi, Luca Maria Gambardella, and Alessandro Giusti*
+*Mirko Nava, Nicholas Carlotti, Luca Crupi, Daniele Palossi, and Alessandro Giusti*
 
 Dalle Molle Institute for Artificial Intelligence, USI-SUPSI, Lugano (Switzerland)
 
 ### Abstract
 
-We propose a novel self-supervised approach to learn CNNs that perform visual localization of a robot in an image using very small labeled training datasets. Self-supervision is obtained by jointly learning a pretext task, i.e., predicting the state of the LEDs of the target robot.
-This pretext task is compelling because: a) it indirectly forces the model to learn to locate the target robot in the image in order to determine its LED states; b) it can be trained on large datasets collected in any environment with no external supervision or tracking infrastructure.
-We instantiate the general approach to a concrete task: visual relative localization of nano-quadrotors.
-Experimental results on a challenging dataset show that the approach is very effective; compared to a baseline that does not use the proposed pretext task, it reduces the mean absolute localization error by as much as 78% (43 to 9 pixels on *x*; 28 to 6 pixels on *y*).
+We propose a novel self-supervised approach for learning to localize robots equipped with controllable LEDs visually. 
+We rely on a few training samples labeled with position ground truth and many training samples in which only the LED state is known, whose collection is cheap. We show that using LED state prediction as a pretext task significantly helps to solve the visual localization end task.
+The resulting model does not require knowledge of LED states during inference. <br>
+We instantiate the approach to visual relative localization of nano-quadrotors: experimental results show that using our pretext task significantly improves localization accuracy (from 68.3% to 76.2%) and outperforms alternative strategies, such as a supervised baseline, model pre-training, or an autoencoding pretext task. We deploy our model aboard a 27-g Crazyflie nano-drone, running at 21 fps, in a position-tracking task of a peer nano-drone.
+Our approach, relying on position labels for only 300 images, yields a mean tracking error of 4.2 cm versus 11.9 cm of a supervised baseline model trained without our pretext task.
 
 <img src="https://github.com/idsia-robotics/leds-as-pretext/blob/main/img/led_pretext_approach.png" width="850" alt="LEDs as Pretext approach" />
 Figure 1: *Overview of our approach. The model is trained to predict: the drone position in the current frame, by minimizing the end loss (**L**end) defined on **T**l (bottom); and the current state of the four drone LEDs, by minimizing the pretext loss (**L**pretext) defined on **T**l and **T**u (top).*
@@ -36,7 +37,6 @@ The PDF of the article is available in Open Access [here]( https://doi.org/10.11
   doi={10.1109/LRA.2022.3143565}
 }
 ```
--->
 
 ### Video
 
@@ -46,6 +46,10 @@ The PDF of the article is available in Open Access [here]( https://doi.org/10.11
 
 The codebase is avaliable [here](https://github.com/idsia-robotics/leds-as-pretext/tree/main/code).
 
-### Dataset
+-->
 
-The entire dataset is available [here](https://drive.switch.ch/index.php/s/p6YsZO3pjf4koso) as a *zipped* HDF5 file containing separate groups for labeled and unlabeled training, validation, and testing sets.
+### Supplementary Material
+
+```diff
+! Videos and code of the proposed approach will soon be made avialable to the community !
+```
