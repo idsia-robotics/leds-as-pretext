@@ -14,8 +14,9 @@ Our approach, relying on position labels for only 300 images, yields a mean trac
 
 <img src="https://github.com/idsia-robotics/leds-as-pretext/blob/main/img/led_pretext_approach.png" width="850" alt="LEDs as Pretext approach" />
 
-
 Figure 1: *Overview of our approach. A fully convolutional network model is trained to predict the drone position in the current frame by minimizing a loss **L**end defined on a small labeled dataset **T**l (bottom), and the state of the four drone LEDs, by minimizing **L**pretext defined on a large dataset **T**l joined with **T**u (top).*
+
+<br>
 
 Table 1: *Comparison of models, five replicas per row. Pearson Correlation Coefficient ρu and ρv , precision P30 and median of the error D tilde.*
 
