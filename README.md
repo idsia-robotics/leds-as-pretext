@@ -13,11 +13,13 @@ We instantiate the approach to visual relative localization of nano-quadrotors: 
 Our approach, relying on position labels for only 300 images, yields a mean tracking error of 4.2 cm versus 11.9 cm of a supervised baseline model trained without our pretext task.
 
 <img src="https://github.com/idsia-robotics/leds-as-pretext/blob/main/img/led_pretext_approach.png" width="850" alt="LEDs as Pretext approach" />
-Figure 1: *Overview of our approach. The model is trained to predict: the drone position in the current frame, by minimizing the end loss (**L**end) defined on **T**l (bottom); and the current state of the four drone LEDs, by minimizing the pretext loss (**L**pretext) defined on **T**l and **T**u (top).*
+
+
+Figure 1: *Overview of our approach. A fully convolutional network model is trained to predict the drone position in the current frame by minimizing a loss **L**end defined on a small labeled dataset **T**l (bottom), and the state of the four drone LEDs, by minimizing **L**pretext defined on a large dataset **T**l joined with **T**u (top).*
+
+Table 1: *Comparison of models, five replicas per row. Pearson Correlation Coefficient ρu and ρv , precision P30 and median of the error D tilde.*
 
 <img src="https://github.com/idsia-robotics/leds-as-pretext/blob/main/img/led_pretext_performance.png" width="900" alt="LEDs as Pretext performance" />
-Figure 2: *On the left, comparison of approaches in terms of MAE (lower is better) and R2 score (higher is better) for the x and y variables.
-On the right, comparison of baseline (red), LEDs as a Pretext (green), and Upper Bound (blue) models trained with varying amounts of labels. MAE improvement refers to the percentage reduction in MAE between baseline and our LED-P approach. Results obtained by averaging the performance on the x and y variables.*
 
 <!--
 
