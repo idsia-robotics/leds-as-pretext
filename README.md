@@ -54,3 +54,17 @@ Table 1: *Comparison of models, five replicas per row. Pearson Correlation Coeff
 ### Code
 
 The codebase for the approach is avaliable [here](https://github.com/idsia-robotics/leds-as-pretext/tree/main/code).
+
+##### Requirements
+
+- Python                       3.8.0
+- h5py                         3.8.0
+- numpy                        1.23.5
+- scipy                        1.10.1
+- torch                        1.13.1
+- torchinfo                    1.8.0
+- torchvision                  0.15.2
+- tensorboard                  2.12.3
+- torch-tb-profiler            0.4.1
+- scikit-image                 0.21.0
+- scikit-learn                 1.2.2
