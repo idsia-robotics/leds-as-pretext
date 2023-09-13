@@ -53,8 +53,4 @@ Table 1: *Comparison of models, five replicas per row. Pearson Correlation Coeff
 
 ### Code
 
-<!-- The codebase is avaliable [here](https://github.com/idsia-robotics/leds-as-pretext/tree/main/code). -->
-
-```diff
-! The codebase of the proposed approach will soon be made avialable to the community !
-```
+The codebase for the approach is avaliable [here](https://github.com/idsia-robotics/leds-as-pretext/tree/main/code).
