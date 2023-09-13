@@ -23,8 +23,13 @@ Table 1: *Comparison of models, five replicas per row. Pearson Correlation Coeff
 <img src="https://github.com/idsia-robotics/leds-as-pretext/blob/main/img/led_pretext_performance.png" width="900" alt="LEDs as Pretext performance" />
 
 <!--
+### Supplementary Material
 
-The PDF of the article is available in Open Access [here]( https://doi.org/10.1109/LRA.2022.3143565).
+```diff
+! Videos and code of the proposed approach will soon be made avialable to the community !
+```
+-->
+<!--
 
 ### Bibtex
 
@@ -40,6 +45,7 @@ The PDF of the article is available in Open Access [here]( https://doi.org/10.11
   doi={10.1109/LRA.2022.3143565}
 }
 ```
+-->
 
 ### Video
 
@@ -47,12 +53,8 @@ The PDF of the article is available in Open Access [here]( https://doi.org/10.11
 
 ### Code
 
-The codebase is avaliable [here](https://github.com/idsia-robotics/leds-as-pretext/tree/main/code).
-
--->
-
-### Supplementary Material
+<!-- The codebase is avaliable [here](https://github.com/idsia-robotics/leds-as-pretext/tree/main/code). -->
 
 ```diff
-! Videos and code of the proposed approach will soon be made avialable to the community !
+! The codebase of the proposed approach will soon be made avialable to the community !
 ```
