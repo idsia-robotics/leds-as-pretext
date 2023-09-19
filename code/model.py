@@ -4,7 +4,37 @@ from numpy import unravel_index, stack
 from torch.nn.functional import binary_cross_entropy_with_logits as bce_logits
 
 
-class Autoencoder(torch.nn.Module):
+class Localizable:
+    def __init__(self, *args, **kwargs):
+        self.grid = torch.stack(
+            torch.meshgrid([torch.arange(320)] * 2, indexing="xy"), dim=-1
+        ).unsqueeze(0)
+        print("Called")
+        super().__init__(*args, **kwargs)
+
+    @torch.no_grad()
+    def localize(self, pos, argmax=False, threshold=None):
+        pos_logits = torch.sigmoid(pos)
+
+        target_size = 320
+        scale_factor = target_size // pos.shape[-1]
+        pos_map_upscaled = torch.nn.functional.interpolate(
+            pos_logits, scale_factor=scale_factor, mode="nearest"
+        )[:, 0]
+
+        if threshold is not None:
+            threshold *= pos_map_upscaled.max(dim=-2, keepdim=True)[0].max(dim=-1, keepdim=True)[0]
+            pos_map_upscaled = torch.clamp(pos_map_upscaled - threshold, 0)
+
+        if argmax:
+            m = pos_map_upscaled.max(dim=-2, keepdim=True)[0].max(dim=-1, keepdim=True)[0]
+            pos_map_upscaled = (pos_map_upscaled == m).to(torch.float32)
+
+        pos_map_prob = pos_map_upscaled / pos_map_upscaled.sum(dim=(-2, -1), keepdim=True)
+        pos_scalar = (self.grid.to(pos_logits.device) * pos_map_prob.unsqueeze(-1)).sum(dim=(1, 2))
+        return pos_scalar
+
+class Autoencoder(torch.nn.Module, Localizable):
     def __init__(self, *args, **kwargs) -> None:
         super().__init__(*args, **kwargs)
 
@@ -111,7 +141,7 @@ class Autoencoder(torch.nn.Module):
         return torch.nn.functional.mse_loss(pred, true)
 
 
-class ClipHead(torch.nn.Module):
+class ClipHead(torch.nn.Module, Localizable):
     def __init__(self, clip_make_embeddings=None, clip_preprocess=None):
         super(ClipHead, self).__init__()
 
@@ -182,7 +212,7 @@ class ConvBlock(torch.nn.Module):
         return out
 
 
-class Frontnet(torch.nn.Module):
+class Frontnet(torch.nn.Module, Localizable):
     def __init__(self, h=320, w=320, c=32, fc_nodes=12800):
         super(Frontnet, self).__init__()
 
@@ -237,7 +267,7 @@ class Frontnet(torch.nn.Module):
         return [x, y, z, phi]
 
 
-class EDNN(torch.nn.Module):
+class EDNN(torch.nn.Module, Localizable):
     def __init__(self):
         super(EDNN, self).__init__()
 
@@ -273,28 +303,7 @@ class EDNN(torch.nn.Module):
         loss = focal * bce_logits(raw_conf, pos_gt, reduction="none")
         return torch.mean(loss.sum(dim=(1, 2, 3)))
 
-    @torch.no_grad()
-    def localize(self, pos, argmax=False, threshold=None):
-        pos_logits = torch.sigmoid(pos)
-
-        pos_map_upscaled = torch.nn.functional.interpolate(
-            pos_logits, scale_factor=8, mode="nearest"
-        )[:, 0]
-
-        if threshold is not None:
-            threshold *= pos_map_upscaled.max(dim=-2, keepdim=True)[0].max(dim=-1, keepdim=True)[0]
-            pos_map_upscaled = torch.clamp(pos_map_upscaled - threshold, 0)
-
-        if argmax:
-            m = pos_map_upscaled.max(dim=-2, keepdim=True)[0].max(dim=-1, keepdim=True)[0]
-            pos_map_upscaled = (pos_map_upscaled == m).to(torch.float32)
-
-        pos_map_prob = pos_map_upscaled / pos_map_upscaled.sum(dim=(-2, -1), keepdim=True)
-        pos_scalar = (self.grid.to(pos_logits.device) * pos_map_prob.unsqueeze(-1)).sum(dim=(1, 2))
-        return pos_scalar
-
-
-class MkModel_led(torch.nn.Module):
+class MkModel_led(torch.nn.Module, Localizable):
     def __init__(self):
         super(MkModel_led, self).__init__()
 
@@ -341,26 +350,6 @@ class MkModel_led(torch.nn.Module):
             return led_prob, pos, led_on
 
         return led_prob, pos
-
-    @torch.no_grad()
-    def localize(self, pos, argmax=False, threshold=None):
-        pos_map_upscaled = torch.nn.functional.interpolate(pos, scale_factor=8, mode="nearest")[
-            :, 0
-        ]
-
-        if threshold is not None:
-            threshold *= pos_map_upscaled.max(dim=-2, keepdim=True)[0].max(dim=-1, keepdim=True)[0]
-            pos_map_upscaled = torch.clamp(pos_map_upscaled - threshold, 0)
-
-        # note: barycenter is assumed as default, unless argmax is True
-        if argmax:
-            m = pos_map_upscaled.max(dim=-2, keepdim=True)[0].max(dim=-1, keepdim=True)[0]
-            pos_map_upscaled = (pos_map_upscaled == m).to(torch.float32)
-
-        pos_map_prob = pos_map_upscaled / pos_map_upscaled.sum(dim=(-2, -1), keepdim=True)
-        pos_scalar = (self.grid.to(pos.device) * pos_map_prob.unsqueeze(-1)).sum(dim=(1, 2))
-        return pos_scalar
-
 
 if __name__ == "__main__":
     from torchinfo import summary
