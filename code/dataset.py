@@ -174,7 +174,16 @@ class RandomHorizontalFlip:
         return batch
 
 
-def get_dataset(filename: PosixPath, subset, size=320, augment=False, led=None, exposure=None):
+def get_dataset(
+    filename: PosixPath,
+    subset,
+    size=320,
+    augment=False,
+    led=None,
+    exposure=None,
+    samples_count=None,
+    samples_count_seed=None,
+):
     kwargs = {
         "keys": ["pose_rel", "led_status", "proj_u", "proj_v", "image", "subset"],
         "libver": "v112",
@@ -200,6 +209,18 @@ def get_dataset(filename: PosixPath, subset, size=320, augment=False, led=None, 
 
     if exposure is not None:
         mask = mask & torch.from_numpy(dataset.data["exposure"][...] == exposure)[:, 0]
+
+    if samples_count is not None:
+        if samples_count == 0:
+            mask = np.zeros_like(mask)
+        else:
+            seed = samples_count_seed
+            rng = np.random.default_rng(seed)
+            selected_so_far_idx = torch.where(mask)[0]
+            picked = rng.choice(selected_so_far_idx, samples_count, replace=False)
+            select_mask = torch.zeros_like(mask)
+            select_mask[picked.tolist()] = True
+            mask = mask & select_mask
 
     return torch.utils.data.Subset(dataset, torch.arange(len(dataset))[mask])
 
