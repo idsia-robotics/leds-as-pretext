@@ -49,6 +49,13 @@ def parse_args(*config):
         default=None,
     )
 
+    parser.add_argument(
+        "--train-sample-count", type=int, help="Number of training sample to use", default=None
+    )
+    parser.add_argument(
+        "--train-sample-seed", type=int, help="Seed to use for sample selection", default=None
+    )
+
     if "model" in config or "train" in config:
         parser.add_argument(
             "-n",
@@ -129,6 +136,25 @@ def parse_args(*config):
             type=float,
             help="fraction of training-set with know led status",
             default=1.0,
+        )
+
+    if "autoencoder" in config:
+        parser.add_argument(
+            "--position-mode",
+            action="store_true",
+            help="If true, will load the model in position inference mode. \nThe output of this network will be a position map.",
+        )
+        parser.add_argument(
+            "--pre-trained-name", type=str, help="Name for the pre-trained model", default=None
+        )
+        parser.add_argument("--bottleneck-size", type=int, default=512)
+
+    if "clip" in config:
+        parser.add_argument("--clip-base-folder", type=str, help="Base folder for the CLIP model")
+
+    if "ednn" in config:
+        parser.add_argument(
+            "--pre-trained-name", type=str, help="Name for the pre-trained model", default=None
         )
 
     args = parser.parse_args()
