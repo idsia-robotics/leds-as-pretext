@@ -22,30 +22,20 @@ Table 1: *Comparison of models, five replicas per row. Pearson Correlation Coeff
 
 <img src="https://github.com/idsia-robotics/leds-as-pretext/blob/main/img/led_pretext_performance.png" width="900" alt="LEDs as Pretext performance" />
 
-<!--
-### Supplementary Material
-
-```diff
-! Videos and code of the proposed approach will soon be made avialable to the community !
-```
--->
-<!--
-
 ### Bibtex
 
 ```properties
-@article{nava2022learning,
-  author={M. {Nava} and A. {Paolillo} and J. {Guzzi} and L. M. {Gambardella} and A. {Giusti}},
+@article{nava2024self,
+  author={Nava, Mirko and Carlotti, Nicholas and Crupi, Luca and Palossi, Daniele and Giusti, Alessandro},
   journal={IEEE Robotics and Automation Letters}, 
-  title={Learning Visual Localization of a Quadrotor Using its Noise as Self-Supervision}, 
-  year={2022},
-  volume={7},
-  number={2},
-  pages={2218-2225},
-  doi={10.1109/LRA.2022.3143565}
+  title={Self-Supervised Learning of Visual Robot Localization Using LED State Prediction as a Pretext Task}, 
+  year={2024},
+  volume={9},
+  number={4},
+  pages={3363-3370},
+  doi={10.1109/LRA.2024.3365973},
 }
 ```
--->
 
 ### Video
 
